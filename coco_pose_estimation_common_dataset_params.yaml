@@ -1,0 +1,43 @@
+
+# OKs sigma values take from https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocotools/cocoeval.py#L523
+
+num_joints: 7
+oks_sigmas: [0.03, 0.03, 0.03, 0.06, 0.06, 0.08, 0.08] 
+
+flip_indexes: []
+
+edge_links:
+- [0, 1] 
+- [0, 2]
+- [1, 3]
+- [2, 4]
+- [3, 5] 
+- [4, 6]
+- [5, 6]
+
+edge_colors:
+- [214, 39, 40]   # bottle-top-center -> bottle-top-left
+- [44, 160, 44]   # bottle-top-center -> bottle-top-right
+- [188, 189, 34]  # bottle-top-left -> bottle-mid-left
+- [148, 103, 189] # bottle-top-right -> bottle-mid-right
+- [31, 119, 180]  # bottle-mid-left -> bottle-base-left
+- [255, 127, 14]  # bottle-mid-right -> bottle-base-right
+- [140, 86, 75]   # bottle-base-left -> bottle-base-right
+
+keypoint_colors:
+- [44, 160, 44]   # bottle-top-center 
+- [214, 39, 40]   # bottle-top-left
+- [148, 103, 189] # bottle-top-right
+- [188, 189, 34]  # bottle-mid-left
+- [255, 127, 14]  # bottle-mid-right
+- [31, 119, 180]  # bottle-base-left 
+- [140, 86, 75]   # bottle-base-right
+
+The oks_sigmas array defines the sigma values for the Object Keypoint Similarity (OKS) metric for each keypoint. I've estimated these values based on the typical proportions of a bottle, but you may need to adjust them based on your specific dataset and requirements. Smaller sigma values indicate tighter localization requirements for those keypoints.
+
+The edge_links define the connections between the keypoints, forming the outline of the bottle shape.
+
+I've also included the edge_colors and keypoint_colors arrays to specify visualization colors for the edges and keypoints respectively. Feel free to modify these colors based on your preferences.
+
+Since the bottle shape is generally symmetrical, I've left the flip_indexes array empty, assuming you don't need to define specific keypoint flipping for data augmentation.
+
